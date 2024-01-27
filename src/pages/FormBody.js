@@ -1,20 +1,45 @@
 import '../App.css';
+import {useState} from "react";
 const FormBody = () => {
+    const today = new Date().toISOString().split("T")[0];
+    const [task,setTask] = useState();
+    const [description,setDescription] = useState();
+    const [dueDate,setDueDate] = useState(today);
+    const [priority,setPriority] = useState("normal");
+    const handleInput= (e) => {
+        const input = e.target.value;
+        setTask(input);
+    }
+    const handleDescription= (e) => {
+        const input = e.target.value;
+        setDescription(input);
+    }
+    const handleDueDate= (e) => {
+        const input = e.target.value;
+        setDueDate(input);
+    }
+    const handlePriority= (e) => {
+        const input = e.target.value;
+        setPriority(input);
+    }
+
+
+
   return (
     <div className="form-body">
-        <input type="text" placeholder="Add new Task" className="full-width"/>
+        <input type="text" placeholder="Add new Task" className="full-width" onChange={handleInput}/>
         <h5>Description</h5>
-        <textarea rows="20"></textarea>
+        <textarea rows="20" onChange={handleDescription}></textarea>
         <div className="info-input">
             <div className="info-item">
                 <h5>Due Date</h5>
-                <input type="date"/>
+                <input type="date" min={today} onChange={handleDueDate} />
             </div>
             <div className="info-item">
                 <h5>Priority</h5>
-                <select>
+                <select value={priority} onChange={handlePriority}>
                     <option>low</option>
-                    <option>medium</option>
+                    <option>normal</option>
                     <option>high</option>
                 </select>
             </div>
