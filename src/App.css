@@ -137,12 +137,32 @@
   width: 20%;
 
 }
+.done-btn{
+  background-color: green;
+  border:none;
+  outline:none;
+  color:white;
+  cursor: pointer;
+  padding: 10px 10px;
+  border-radius: 5px;
+  width: 20%;
+
+}
 .task-detail .task-detail-item input{
     width:30px;
   height: 30px;
   margin: 8px 16px;
 
 }
+
+.bulk-detail{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  border : 1px solid #1e1f22;
+  padding: 5px 10px;
+}
+
 
 
 

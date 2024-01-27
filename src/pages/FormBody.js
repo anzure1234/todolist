@@ -1,11 +1,13 @@
 import '../App.css';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 const FormBody = () => {
     const today = new Date().toISOString().split("T")[0];
     const [task,setTask] = useState();
     const [description,setDescription] = useState();
     const [dueDate,setDueDate] = useState(today);
     const [priority,setPriority] = useState("normal");
+    let [taskList,setTaskList] = useState([]);
+
     const handleInput= (e) => {
         const input = e.target.value;
         setTask(input);
@@ -22,7 +24,19 @@ const FormBody = () => {
         const input = e.target.value;
         setPriority(input);
     }
+    const handleAdd = () => {
+        const newTask = {
+            task: task,
+            description: description,
+            dueDate: dueDate,
+            priority: priority
+        }
+        setTaskList([...taskList,newTask]);
+    }
 
+    useEffect(() => {
+        console.log(taskList);
+    }, [taskList]);
 
 
   return (
@@ -45,7 +59,7 @@ const FormBody = () => {
             </div>
         </div>
         <br/>
-        <button type="Submit" className="submit-btn">Add</button>
+        <button type="Submit" className="submit-btn" onClick={handleAdd}>Add</button>
     </div>
   );
 }
