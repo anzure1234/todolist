@@ -7,6 +7,8 @@ import {useState} from "react";
 
 function App() {
     const [taskData,setTaskData]= useState([]);
+    const [isUpdate,setIsUpdate] = useState(false);
+
 
 
     const handleAddTask = (task) => {
@@ -14,10 +16,11 @@ function App() {
     }
 
 
+
     return (
         <div className="App">
             <NewTask handleAddTask={handleAddTask}/>
-            <TodoList TaskData={taskData} />
+            <TodoList TaskData={taskData} setIsUpdate={setIsUpdate} isUpdate={isUpdate}/>
         </div>
     );
 }

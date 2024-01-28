@@ -9,8 +9,8 @@ const TodoList = (props) => {
 
 
 
-    const tasks =  props.TaskData.map((task, idx) => {
-        return <Task task={task} idx={idx}/>
+    const tasks =  props.TaskData.map((task,idx) => {
+        return <Task task={task} setIsUpdate={props.setIsUpdate(true)} isUpdate={props.isUpdate} idx={idx}/>
     });
 
     return<div className="container-full">

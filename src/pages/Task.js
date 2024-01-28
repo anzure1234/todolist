@@ -3,7 +3,7 @@ import {useState} from "react";
 import BulkAction from "./BulkAction";
 
 const Task = (props) => {
-
+    console.log(props);
 
     const [isCheck,setIsCheck] = useState(false);
     const [isDetail,setIsDetail] = useState(false);
@@ -27,7 +27,7 @@ const Task = (props) => {
             <button className="detail-btn" onClick={detailHandle}>Detail</button>
             <button className="remove-btn">Remove</button>
         </div>
-        {isDetail &&<FormBody />}
+        {isDetail &&<FormBody isUpdate={props.isUpdate} task={props.task}/>}
 
         {isCheck &&<BulkAction/>}
 
