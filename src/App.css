@@ -1,5 +1,5 @@
-.App {
-
+* {
+  box-sizing: border-box;
 }
 
 .App-logo {
@@ -99,7 +99,7 @@
 }
 
 .task-detail{
-  display:flex;
+  /*display:flex;*/
     justify-content: space-between;
   align-items: center;
   border : 1px solid #1e1f22;

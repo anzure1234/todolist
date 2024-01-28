@@ -1,12 +1,17 @@
 import '../App.css';
 import {useEffect, useState} from "react";
-const FormBody = () => {
+const FormBody = (props) => {
+
+
     const today = new Date().toISOString().split("T")[0];
     const [task,setTask] = useState();
     const [description,setDescription] = useState();
     const [dueDate,setDueDate] = useState(today);
     const [priority,setPriority] = useState("normal");
     let [taskList,setTaskList] = useState([]);
+    let [isUpdate,setIsUpdate] = useState(false);
+
+
 
     const handleInput= (e) => {
         const input = e.target.value;
@@ -31,13 +36,22 @@ const FormBody = () => {
             dueDate: dueDate,
             priority: priority
         }
-        setTaskList([...taskList,newTask]);
+        props.TaskData.handleAddTask(newTask);
     }
 
-    useEffect(() => {
-        console.log(taskList);
-    }, [taskList]);
-
+    const handleUpdate = () => {
+        const newTask = {
+            task: task,
+            description: description,
+            dueDate: dueDate,
+            priority: priority
+        }
+        props.TaskData.filter((task,idx) => {
+            if(idx === task.idx){
+                task = newTask;
+            }
+        });
+    }
 
   return (
     <div className="form-body">
@@ -59,7 +73,9 @@ const FormBody = () => {
             </div>
         </div>
         <br/>
-        <button type="Submit" className="submit-btn" onClick={handleAdd}>Add</button>
+        {isUpdate ? <button type="Submit" className="submit-btn" onClick={handleUpdate}>Update</button> :
+            <button type="Submit" className="submit-btn" onClick={handleAdd}>Add</button>
+        }
     </div>
   );
 }

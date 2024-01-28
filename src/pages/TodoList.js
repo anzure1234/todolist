@@ -4,18 +4,22 @@ import Task from "./Task";
 import BulkAction from "./BulkAction";
 import {useState} from "react";
 
-const TodoList = () => {
-    const [isCheck,setIsCheck] = useState(false);
-    const [isDetail,setIsDetail] = useState(false);
+const TodoList = (props) => {
+
+
+
+
+    const tasks =  props.TaskData.map((task, idx) => {
+        return <Task task={task} idx={idx}/>
+    });
 
     return<div className="container-full">
             <div className="container">
                 <h2>TodoList</h2>
                 <input type="text" placeholder="Search..."/>
-                <Task setIsCheck={setIsCheck} setIsDetail ={setIsDetail}/>
-                {isDetail &&<FormBody />}
+                {tasks}
 
-                {isCheck &&<BulkAction/>}
+
             </div>
         </div>
 

@@ -1,10 +1,10 @@
 import FormBody from "./FormBody";
 
-const newTask = () => {
+const newTask = (props) => {
     return <div className="container-full">
         <div className="container">
             <h2>New Task</h2>
-            <FormBody/>
+            <FormBody TaskData={props}/>
 
 
 

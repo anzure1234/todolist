@@ -3,14 +3,23 @@ import './App.css';
 import NewTask from "./pages/NewTask";
 import Task from "./pages/Task";
 import TodoList from "./pages/TodoList";
+import {useState} from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <NewTask/>
-        <TodoList/>
-    </div>
-  );
+    const [taskData,setTaskData]= useState([]);
+
+
+    const handleAddTask = (task) => {
+        setTaskData([...taskData,task]);
+    }
+
+
+    return (
+        <div className="App">
+            <NewTask handleAddTask={handleAddTask}/>
+            <TodoList TaskData={taskData} />
+        </div>
+    );
 }
 
 export default App;
