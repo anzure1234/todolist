@@ -6,6 +6,7 @@ import TodoList from "./pages/TodoList";
 import {useEffect, useState} from "react";
 
 function App() {
+
     const [taskData,setTaskData]= useState([]);
     const [selectedTasks,setSelectedTasks] = useState([]);
     const handleAddTask = (task) => {
