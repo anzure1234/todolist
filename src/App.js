@@ -10,6 +10,7 @@ function App() {
     const [selectedTasks,setSelectedTasks] = useState([]);
     const handleAddTask = (task) => {
         setTaskData([...taskData,task]);
+        localStorage.setItem("tasks", JSON.stringify([...taskData,task]));
     }
 
     const handleUpdateTask = (task) => {
@@ -27,12 +28,20 @@ function App() {
         if (_idx !== -1) {
             let temp = taskData;
             temp.splice(_idx, 1);
+            localStorage.removeItem("tasks");
+            localStorage.setItem("tasks", JSON.stringify([...temp]));
             setTaskData([...temp]);
         }
     }
     const handleDeleteBulkTask = () =>{
-        setTaskData(taskData.filter(task => !selectedTasks.includes(task)));
+        const updatedTaskData = taskData.filter(task => {
+            return !selectedTasks.find(selectedTask => selectedTask.id === task.id);
+        });
+        setTaskData(updatedTaskData);
+        localStorage.removeItem("tasks");
+        localStorage.setItem("tasks", JSON.stringify([...updatedTaskData]));
         setSelectedTasks([]);
+
     }
     const handleSelectedTask = (task) =>{
         if (selectedTasks.includes(task)) {

@@ -6,7 +6,10 @@ import {useState} from "react";
 
 const TodoList = (props) => {
     const [isCheck, setIsCheck] = useState(false);
-    const tasks =  props.TaskData.map((task,idx) => {
+
+    let taskList = JSON.parse(localStorage.getItem("tasks"));
+
+    const tasks =  taskList?.map((task,idx) => {
         return <Task task={task} {...props} idx={idx} setIsCheck={setIsCheck}/>
     });
 
