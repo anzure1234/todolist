@@ -2,15 +2,17 @@ import FormBody from "./FormBody";
 import '../App.css';
 import Task from "./Task";
 import BulkAction from "./BulkAction";
-import {useState} from "react";
+import {useContext, useState} from "react";
+import {AppContext} from "../App";
 
-const TodoList = (props) => {
+const TodoList = () => {
+
+    const _context = useContext(AppContext);
     const [isCheck, setIsCheck] = useState(false);
 
-    let taskList = JSON.parse(localStorage.getItem("tasks"));
 
-    const tasks =  taskList?.map((task,idx) => {
-        return <Task task={task} {...props} idx={idx} setIsCheck={setIsCheck}/>
+    const tasks =  _context.taskData?.map((task,idx) => {
+        return <Task task={task} idx={idx} setIsCheck={setIsCheck}/>
     });
 
     return<div className="container-full">
@@ -18,7 +20,7 @@ const TodoList = (props) => {
                 <h2>TodoList</h2>
                 <input type="text" placeholder="Search..."/>
                 {tasks}
-                {isCheck && <BulkAction handleDeleteBulkTask={props.handleDeleteBulkTask}/>}
+                {isCheck && <BulkAction/>}
             </div>
         </div>
 

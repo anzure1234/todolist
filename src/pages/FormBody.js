@@ -1,12 +1,15 @@
 import '../App.css';
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {uuidv4} from "../common/common";
+import {AppContext} from "../App";
 
 const FormBody = (props) => {
-    console.log(props);
+    const _context = useContext(AppContext);
+    console.log("_context",_context)
 
 
-    const {handleUpdateTask, TaskData, isUpdate} = props;
+
+    const {handleUpdateTask, TaskData, isUpdate} = _context;
 
     const today = new Date().toISOString().split("T")[0];
     const [task, setTask] = useState(props?.task);
@@ -24,7 +27,7 @@ const FormBody = (props) => {
     }
 
     const handleAdd = () => {
-        TaskData.handleAddTask({
+        _context.handleAddTask({
             ...task,
             id: uuidv4()
         });

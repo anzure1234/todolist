@@ -3,17 +3,27 @@ import './App.css';
 import NewTask from "./pages/NewTask";
 import Task from "./pages/Task";
 import TodoList from "./pages/TodoList";
-import {useEffect, useState} from "react";
+import {createContext, useEffect, useState} from "react";
+import task from "./pages/Task";
+export const AppContext = createContext();
 
 function App() {
 
     const [taskData,setTaskData]= useState([]);
     const [selectedTasks,setSelectedTasks] = useState([]);
+
+
+    useEffect(()=>{
+        const getTasks = localStorage.getItem("tasks");
+        setTaskData(JSON.parse(getTasks));
+    },[])
+
+
     const handleAddTask = (task) => {
         setTaskData([...taskData,task]);
         localStorage.setItem("tasks", JSON.stringify([...taskData,task]));
     }
-
+    console.log(taskData)
     const handleUpdateTask = (task) => {
         let _idx = taskData.findIndex(x=>x.id === task.id);
         if (_idx !== -1) {
@@ -53,12 +63,22 @@ function App() {
     }
 
 
+    const props = {
+        taskData: taskData,
+        handleSelectedTask: handleSelectedTask,
+        handleDeleteBulkTask:handleDeleteBulkTask,
+        handleDeleteTask:handleDeleteTask,
+        handleUpdateTask:handleUpdateTask,
+        handleAddTask:handleAddTask
+    }
 
     return (
-        <div className="App">
-            <NewTask handleAddTask={handleAddTask}/>
-            <TodoList TaskData={taskData}  handleUpdateTask={handleUpdateTask} handleDeleteTask={handleDeleteTask} handleDeleteBulkTask={handleDeleteBulkTask} handleSelectedTask={handleSelectedTask}/>
-        </div>
+        <AppContext.Provider value={props}>
+            <div className="App">
+                <NewTask/>
+                <TodoList TaskData={taskData}/>
+            </div>
+        </AppContext.Provider>
     );
 }
 

@@ -1,9 +1,11 @@
 import FormBody from "./FormBody";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import BulkAction from "./BulkAction";
+import {AppContext} from "../App";
 
 const Task = (props) => {
 
+    const _context = useContext(AppContext);
 
     const [isDetail, setIsDetail] = useState(false);
     const [isUpdate, setIsUpdate] = useState(false);
@@ -11,7 +13,7 @@ const Task = (props) => {
 
     const checkboxHandle = (e) => {
         props.setIsCheck(e.target.checked);
-        props.handleSelectedTask(props.task);
+        _context.handleSelectedTask(props.task);
 
     }
     const detailHandle = (e) => {
@@ -19,7 +21,7 @@ const Task = (props) => {
         setIsDetail(prevState => !prevState);
     }
     const deleteHandle=(e)=>{
-        props.handleDeleteTask(props.task);
+        _context.handleDeleteTask(props.task);
     }
 
 
