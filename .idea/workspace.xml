@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24f2c74b-62e2-433b-aab9-6a596d77ad3b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="24f2c74b-62e2-433b-aab9-6a596d77ad3b" name="Changes" comment="1">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/BulkAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/BulkAction.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/FormBody.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/FormBody.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/NewTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/NewTask.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Task.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/TodoList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/TodoList.js" afterDir="false" />
     </list>
@@ -73,11 +69,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706491696467</updated>
-      <workItem from="1706491702015" duration="5371000" />
+      <workItem from="1706491702015" duration="14038000" />
     </task>
+    <task id="LOCAL-00001" summary="1">
+      <option name="closed" value="true" />
+      <created>1706497624125</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1706497624125</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="1" />
+    <option name="LAST_COMMIT_MESSAGE" value="1" />
   </component>
 </project>

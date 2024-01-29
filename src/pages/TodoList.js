@@ -5,8 +5,9 @@ import BulkAction from "./BulkAction";
 import {useState} from "react";
 
 const TodoList = (props) => {
+    const [isCheck, setIsCheck] = useState(false);
     const tasks =  props.TaskData.map((task,idx) => {
-        return <Task task={task} {...props} idx={idx}/>
+        return <Task task={task} {...props} idx={idx} setIsCheck={setIsCheck}/>
     });
 
     return<div className="container-full">
@@ -14,6 +15,7 @@ const TodoList = (props) => {
                 <h2>TodoList</h2>
                 <input type="text" placeholder="Search..."/>
                 {tasks}
+                {isCheck && <BulkAction handleDeleteBulkTask={props.handleDeleteBulkTask}/>}
             </div>
         </div>
 

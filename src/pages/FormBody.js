@@ -3,16 +3,15 @@ import {useEffect, useState} from "react";
 import {uuidv4} from "../common/common";
 
 const FormBody = (props) => {
+    console.log(props);
 
 
-    const {handleUpdateTask,TaskData,isUpdate    } = props;
+    const {handleUpdateTask, TaskData, isUpdate} = props;
 
     const today = new Date().toISOString().split("T")[0];
     const [task, setTask] = useState(props?.task);
-    const [description, setDescription] = useState();
     const [dueDate, setDueDate] = useState(today);
     const [priority, setPriority] = useState("normal");
-    let [taskList, setTaskList] = useState([]);
 
 
     const handleInput = (e, prop) => {
@@ -23,14 +22,6 @@ const FormBody = (props) => {
         }))
     }
 
-    const handleDueDate = (e) => {
-        let input = e.target.value;
-        setDueDate(input);
-    }
-    const handlePriority = (e) => {
-        const input = e.target.value;
-        setPriority(input);
-    }
     const handleAdd = () => {
         TaskData.handleAddTask({
             ...task,
@@ -39,36 +30,29 @@ const FormBody = (props) => {
     }
 
     const handleUpdate = () => {
-        if (handleUpdateTask ) {
+        if (handleUpdateTask) {
             handleUpdateTask(task);
         }
     }
 
     return (
         <div className="form-body">
-            <input value={task?.task} type="text" placeholder={props.isUpdate ? props.task.task : "Add new Task"} className="full-width"
+            <input value={task?.task} type="text" placeholder="Add new Task" className="full-width"
                    onChange={(e) => handleInput(e, "task")}/>
             <h5>Description</h5>
-            <textarea value={task?.description} rows="20" onChange={(e) => handleInput(e, "description")} placeholder={props.isUpdate?props.task.description:""}></textarea>
+            <textarea value={task?.description} rows="20" onChange={(e) => handleInput(e, "description")}></textarea>
             <div className="info-input">
                 <div className="info-item">
                     <h5>Due Date</h5>
-                    {isUpdate ? <input type="date" min={today} value={props.task.dueDate} onChange={handleDueDate}/> :
-                        <input type="date" min={today} value={dueDate} onChange={handleDueDate}/>}
+                    <input type="date" min={today} value={task?.dueDate} onChange={(e) => handleInput(e, "dueDate")}/>
                 </div>
                 <div className="info-item">
-                <h5>Priority</h5>
-                    {isUpdate ?
-                        <select value={props.task.priority} onChange={handlePriority}>
+                    <h5>Priority</h5>
+                    <select value={task?.priority} onChange={(e) => handleInput(e, "priority")}>
                         <option>low</option>
                         <option>normal</option>
                         <option>high</option>
-                    </select> :
-                        <select value={priority} onChange={handlePriority}>
-                        <option>low</option>
-                        <option>normal</option>
-                        <option>high</option>
-                        </select>}
+                    </select>
                 </div>
             </div>
             <br/>
