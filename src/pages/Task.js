@@ -3,16 +3,17 @@ import {useState} from "react";
 import BulkAction from "./BulkAction";
 
 const Task = (props) => {
-    console.log(props);
-
-    const [isCheck,setIsCheck] = useState(false);
-    const [isDetail,setIsDetail] = useState(false);
+    console.log("props 1", props)
+    const [isCheck, setIsCheck] = useState(false);
+    const [isDetail, setIsDetail] = useState(false);
+    const [isUpdate, setIsUpdate] = useState(false);
 
 
     const checkboxHandle = (e) => {
         setIsCheck(e.target.checked);
     }
     const detailHandle = (e) => {
+        setIsUpdate(!isUpdate)
         setIsDetail(prevState => !prevState);
     }
 
@@ -27,9 +28,9 @@ const Task = (props) => {
             <button className="detail-btn" onClick={detailHandle}>Detail</button>
             <button className="remove-btn">Remove</button>
         </div>
-        {isDetail &&<FormBody isUpdate={props.isUpdate} task={props.task}/>}
+        {isDetail && <FormBody {...props} isUpdate={isUpdate} setIsUpdate={setIsUpdate}/>}
 
-        {isCheck &&<BulkAction/>}
+        {isCheck && <BulkAction/>}
 
     </div>
 }

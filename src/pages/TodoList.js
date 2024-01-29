@@ -5,12 +5,8 @@ import BulkAction from "./BulkAction";
 import {useState} from "react";
 
 const TodoList = (props) => {
-
-
-
-
     const tasks =  props.TaskData.map((task,idx) => {
-        return <Task task={task} setIsUpdate={props.setIsUpdate(true)} isUpdate={props.isUpdate} idx={idx}/>
+        return <Task task={task} {...props} idx={idx}/>
     });
 
     return<div className="container-full">
@@ -18,8 +14,6 @@ const TodoList = (props) => {
                 <h2>TodoList</h2>
                 <input type="text" placeholder="Search..."/>
                 {tasks}
-
-
             </div>
         </div>
 

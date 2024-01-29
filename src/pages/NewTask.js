@@ -5,9 +5,6 @@ const newTask = (props) => {
         <div className="container">
             <h2>New Task</h2>
             <FormBody TaskData={props}/>
-
-
-
         </div>
     </div>
 }
