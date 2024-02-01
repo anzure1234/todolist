@@ -20,26 +20,27 @@ const Task = (props) => {
         setIsUpdate(!isUpdate)
         setIsDetail(prevState => !prevState);
     }
-    const deleteHandle=(e)=>{
+    const deleteHandle = (e) => {
         _context.handleDeleteTask(props.task);
     }
 
 
-
-    return <div className="task-detail">
-        <div className="task-detail-item">
-            <input type="checkbox"  onChange={checkboxHandle}/>
-            <h4>{props.task.task}</h4>
+    return (
+        <div>
+        <div className="task-detail">
+            <div className="task-detail-item">
+                <input type="checkbox" onChange={checkboxHandle}/>
+                <h4>{props.task.task}</h4>
+            </div>
+            <input value={props.idx} type="hidden"/>
+            <div className="task-detail-item">
+                <button className="detail-btn" onClick={detailHandle}>Detail</button>
+                <button className="remove-btn" onClick={deleteHandle}>Remove</button>
+            </div>
         </div>
-        <input value={props.idx} type="hidden"/>
-        <div className="task-detail-item">
-            <button className="detail-btn" onClick={detailHandle}>Detail</button>
-            <button className="remove-btn" onClick={deleteHandle}>Remove</button>
+            {isDetail && <FormBody {...props} isUpdate={isUpdate} setIsUpdate={setIsUpdate}/>}
+
         </div>
-        {isDetail && <FormBody {...props} isUpdate={isUpdate} setIsUpdate={setIsUpdate}/>}
-
-
-
-    </div>
+    )
 }
 export default Task;

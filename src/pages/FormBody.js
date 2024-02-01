@@ -4,18 +4,17 @@ import {uuidv4} from "../common/common";
 import {AppContext} from "../App";
 
 const FormBody = (props) => {
+
     const _context = useContext(AppContext);
-    console.log("_context",_context)
+    console.log("_context", _context);
 
 
-
-    const {handleUpdateTask, TaskData, isUpdate} = _context;
+    const {handleUpdateTask, TaskData} = _context;
 
     const today = new Date().toISOString().split("T")[0];
     const [task, setTask] = useState(props?.task);
     const [dueDate, setDueDate] = useState(today);
     const [priority, setPriority] = useState("normal");
-
 
 
     const handleInput = (e, prop) => {
@@ -31,6 +30,13 @@ const FormBody = (props) => {
             ...task,
             id: uuidv4()
         });
+        setTask({
+            task: "",
+            description: "",
+            dueDate: "",
+            priority: "normal"
+        })
+
     }
 
     const handleUpdate = () => {
@@ -60,7 +66,7 @@ const FormBody = (props) => {
                 </div>
             </div>
             <br/>
-            {isUpdate ? <button type="Submit" className="submit-btn" onClick={handleUpdate}>Update</button> :
+            {props.isUpdate ? <button type="Submit" className="submit-btn" onClick={handleUpdate}>Update</button> :
                 <button type="Submit" className="submit-btn" onClick={handleAdd}>Add</button>
             }
         </div>

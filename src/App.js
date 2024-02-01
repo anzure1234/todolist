@@ -5,7 +5,7 @@ import Task from "./pages/Task";
 import TodoList from "./pages/TodoList";
 import {createContext, useEffect, useState} from "react";
 import task from "./pages/Task";
-export const AppContext = createContext();
+export const AppContext = createContext(null);
 
 function App() {
 
